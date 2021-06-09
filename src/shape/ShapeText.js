@@ -145,6 +145,17 @@ fabric[shapeType] = fabric.util.createClass(fabric.Group, {
               ...options.shapeOptions,
             }
           );
+          break;
+        }
+        case "triangle": {
+          shape = new fabric.Triangle({
+            ...shapeDefaultOptions,
+            ...options,
+            left: 0,
+            top: 0,
+            ...options.shapeOptions,
+          });
+          break;
         }
       }
 

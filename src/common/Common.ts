@@ -4,6 +4,7 @@ import {
   IObjectOptions,
   IRectOptions,
   ITextOptions,
+  ITriangleOptions,
 } from "fabric/fabric-impl";
 
 export type IParallelogramOptions = IRectOptions & { percent?: number };
@@ -11,6 +12,7 @@ export interface IShapeTextType {
   rect: IRectOptions;
   circle: ICircleOptions;
   parallelogram: IParallelogramOptions;
+  triangle: ITriangleOptions;
 }
 
 export interface IShapeTextOptions<T extends keyof IShapeTextType>

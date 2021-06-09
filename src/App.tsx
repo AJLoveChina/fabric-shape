@@ -14,6 +14,85 @@ function App() {
 
   useCanvas({
     ref,
+    title: "Basic shape (Triangle) with text",
+    height: 500,
+    callback(canvasEle, setFabCanvas) {
+      let canvas = new fabric.Canvas(canvasEle, {
+        isDrawingMode: false,
+      });
+
+      setFabCanvas(canvas);
+
+      let shapeTextOptions: IShapeTextOptions<"triangle"> = {
+        placeholder: "Type Text",
+        editable: true,
+        shapeType: "triangle",
+        width: 200,
+        height: 200,
+        insidePadding: 10,
+      };
+      canvas.add(new fabAny.ShapeText(shapeTextOptions));
+
+      let shapeTextOptions1_2: IShapeTextOptions<"triangle"> = {
+        placeholder: "Type Text",
+        editable: true,
+        shapeType: "triangle",
+        width: 150,
+        height: 150,
+        insidePadding: 10,
+        top: 300,
+        textOptions: {
+          text: `\n\nthis is \nshape text \ninside a triangle`,
+          top: 65,
+          textAlign: "center",
+          originY: "center",
+          stroke: "#333",
+        },
+        shapeOptions: {
+          fill: "rgb(127,198,173, 0.4)",
+          stroke: "rgb(127,198,173, 0.9)",
+        },
+      };
+      canvas.add(new fabAny.ShapeText(shapeTextOptions1_2));
+
+      let shapeTextOptions2: IShapeTextOptions<"triangle"> = {
+        placeholder: "Type Text",
+        editable: true,
+        shapeType: "triangle",
+        width: 200,
+        height: 200,
+        insidePadding: 10,
+        left: 300,
+        top: 0,
+        textOptions: {
+          textAlign: "center",
+          top: 90,
+        },
+        shapeOptions: {},
+      };
+      canvas.add(new fabAny.ShapeText(shapeTextOptions2));
+
+      let shapeTextOptions2_2: IShapeTextOptions<"triangle"> = {
+        placeholder: "Type Text",
+        editable: true,
+        shapeType: "triangle",
+        width: 100,
+        height: 200,
+        insidePadding: 10,
+        left: 300,
+        top: 250,
+        textOptions: {
+          textAlign: "center",
+          top: 120,
+        },
+        shapeOptions: {},
+      };
+      canvas.add(new fabAny.ShapeText(shapeTextOptions2_2));
+    },
+  });
+
+  useCanvas({
+    ref,
     title: "Basic shape (parallelogram) with text",
     height: 500,
     callback(canvasEle, setFabCanvas) {
