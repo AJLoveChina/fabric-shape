@@ -14,8 +14,8 @@ function App() {
 
   useCanvas({
     ref,
-    title: "Basic shape (rect) with text",
-    height: 400,
+    title: "Basic shape (parallelogram) with text",
+    height: 500,
     callback(canvasEle, setFabCanvas) {
       let canvas = new fabric.Canvas(canvasEle, {
         isDrawingMode: false,
@@ -23,7 +23,66 @@ function App() {
 
       setFabCanvas(canvas);
 
-      let shapeTextOptions: IShapeTextOptions<"circle"> & IGroupOptions = {
+      let shapeTextOptions: IShapeTextOptions<"parallelogram"> = {
+        placeholder: "Type Text",
+        editable: true,
+        shapeType: "parallelogram",
+        width: 200,
+        height: 200,
+        insidePadding: 10,
+      };
+      canvas.add(new fabAny.ShapeText(shapeTextOptions));
+
+      let shapeTextOptions1_2: IShapeTextOptions<"parallelogram"> = {
+        editable: true,
+        shapeType: "parallelogram",
+        width: 100,
+        height: 100,
+        insidePadding: 10,
+        top: 300,
+        textOptions: {
+          text: `this is
+a text
+from shape`,
+          textAlign: "center",
+        },
+      };
+      canvas.add(new fabAny.ShapeText(shapeTextOptions1_2));
+
+      let shapeTextOptions2: IShapeTextOptions<"parallelogram"> = {
+        placeholder: "Type Text",
+        editable: true,
+        shapeType: "parallelogram",
+        width: 200,
+        height: 100,
+        insidePadding: 10,
+        left: 300,
+        top: 0,
+        textOptions: {
+          textAlign: "center",
+          top: 40,
+          originY: "center",
+        },
+        shapeOptions: {
+          percent: 0.2,
+        },
+      };
+      canvas.add(new fabAny.ShapeText(shapeTextOptions2));
+    },
+  });
+
+  useCanvas({
+    ref,
+    title: "Basic shape (Circle) with text",
+    height: 500,
+    callback(canvasEle, setFabCanvas) {
+      let canvas = new fabric.Canvas(canvasEle, {
+        isDrawingMode: false,
+      });
+
+      setFabCanvas(canvas);
+
+      let shapeTextOptions: IShapeTextOptions<"circle"> = {
         placeholder: "Type Text",
         editable: true,
         shapeType: "circle",
@@ -33,7 +92,22 @@ function App() {
       };
       canvas.add(new fabAny.ShapeText(shapeTextOptions));
 
-      let shapeTextOptions2: IShapeTextOptions<"circle"> & IGroupOptions = {
+      let shapeTextOptions1_2: IShapeTextOptions<"circle"> = {
+        placeholder: "Type Text Right Align",
+        editable: true,
+        shapeType: "circle",
+        left: 0,
+        top: 300,
+        width: 150,
+        height: 150,
+        insidePadding: 10,
+        textOptions: {
+          textAlign: "right",
+        },
+      };
+      canvas.add(new fabAny.ShapeText(shapeTextOptions1_2));
+
+      let shapeTextOptions2: IShapeTextOptions<"circle"> = {
         placeholder: "Type Text",
         shapeType: "circle",
         left: 300,
@@ -58,7 +132,7 @@ function App() {
       };
       canvas.add(new fabAny.ShapeText(shapeTextOptions2));
 
-      let shapeTextOptions3: IShapeTextOptions<"circle"> & IGroupOptions = {
+      let shapeTextOptions3: IShapeTextOptions<"circle"> = {
         placeholder: "Type Text",
         editable: true,
         shapeType: "circle",
@@ -99,7 +173,7 @@ function App() {
 
       setFabCanvas(canvas);
 
-      let shapeTextOptions: IShapeTextOptions<"rect"> & IGroupOptions = {
+      let shapeTextOptions: IShapeTextOptions<"rect"> = {
         placeholder: "Type Text",
         editable: true,
         shapeType: "rect",
@@ -109,7 +183,7 @@ function App() {
       };
       canvas.add(new fabAny.ShapeText(shapeTextOptions));
 
-      let shapeTextOptions2: IShapeTextOptions<"rect"> & IGroupOptions = {
+      let shapeTextOptions2: IShapeTextOptions<"rect"> = {
         placeholder: "Type Text",
         shapeType: "rect",
         left: 300,
@@ -133,7 +207,7 @@ function App() {
       };
       canvas.add(new fabAny.ShapeText(shapeTextOptions2));
 
-      let shapeTextOptions3: IShapeTextOptions<"rect"> & IGroupOptions = {
+      let shapeTextOptions3: IShapeTextOptions<"rect"> = {
         placeholder: "Type Text",
         editable: true,
         shapeType: "rect",

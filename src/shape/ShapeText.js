@@ -100,11 +100,14 @@ fabric[shapeType] = fabric.util.createClass(fabric.Group, {
       options.textOptions || (options.textOptions = {});
 
       let shape;
+      let shapeDefaultOptions = {
+        stroke: "#000",
+        fill: "transparent",
+      };
       switch (options.shapeType) {
         case "rect": {
           shape = new fabric.Rect({
-            stroke: "#000",
-            fill: "transparent",
+            ...shapeDefaultOptions,
             ...options,
             left: 0,
             top: 0,
@@ -114,8 +117,7 @@ fabric[shapeType] = fabric.util.createClass(fabric.Group, {
         }
         case "circle": {
           shape = new fabric.Circle({
-            stroke: "#000",
-            fill: "transparent",
+            ...shapeDefaultOptions,
             ...options,
             left: 0,
             top: 0,
@@ -123,6 +125,26 @@ fabric[shapeType] = fabric.util.createClass(fabric.Group, {
             ...options.shapeOptions,
           });
           break;
+        }
+        case "parallelogram": {
+          let percent = options.shapeOptions.percent || 1 / 3;
+          percent <= 0 && (percent = 0);
+          percent >= 1 && (percent = 1);
+          shape = new fabric.Polygon(
+            [
+              { x: options.width * percent, y: 0 },
+              { x: options.width, y: 0 },
+              { x: options.width * (1 - percent), y: options.height },
+              { x: 0, y: options.height },
+            ],
+            {
+              ...shapeDefaultOptions,
+              ...options,
+              left: 0,
+              top: 0,
+              ...options.shapeOptions,
+            }
+          );
         }
       }
 

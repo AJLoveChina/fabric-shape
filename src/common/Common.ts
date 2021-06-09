@@ -1,10 +1,20 @@
-import { ICircleOptions, IRectOptions, ITextOptions } from "fabric/fabric-impl";
+import {
+  ICircleOptions,
+  IGroupOptions,
+  IObjectOptions,
+  IRectOptions,
+  ITextOptions,
+} from "fabric/fabric-impl";
 
+export type IParallelogramOptions = IRectOptions & { percent?: number };
 export interface IShapeTextType {
   rect: IRectOptions;
   circle: ICircleOptions;
+  parallelogram: IParallelogramOptions;
 }
-export interface IShapeTextOptions<T extends keyof IShapeTextType> {
+
+export interface IShapeTextOptions<T extends keyof IShapeTextType>
+  extends IGroupOptions {
   shapeType: T;
   placeholder?: string;
   textOptions?: ITextOptions;
